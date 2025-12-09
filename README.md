@@ -1,3 +1,1 @@
 # mobileApplication
-
-Yo man
