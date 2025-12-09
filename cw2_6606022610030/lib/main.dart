@@ -24,6 +24,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  int num = 0;
+  String num1 = "";
+  String num2 = "";
+  String Operator = "";
+  String ShowVal = "";
+  String Result = "";
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,12 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             // Display Number text
-            const Text("Display Number", style: TextStyle(fontSize: 30)),
-            
-            const SizedBox(height: 10),
-            
-            // The number display (shows 0)
-            const Text("0", style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold)),
+            Text(ShowVal, style: TextStyle(fontSize: 30)),
             
             const SizedBox(height: 20),
             
@@ -48,13 +52,47 @@ class _MyHomePageState extends State<MyHomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FloatingActionButton(onPressed: () {}, child: const Text('7')),
+                FloatingActionButton(onPressed: () {
+                  setState(() {
+                    if (Operator.isEmpty) {
+                      num1 += "7";
+                      ShowVal = num1;
+                    } else {
+                      num2 += "7";
+                      ShowVal = num2;
+                    }
+                  });
+                }, child: const Text('7')),
                 const SizedBox(width: 10),
-                FloatingActionButton(onPressed: () {}, child: const Text('8')),
+                FloatingActionButton(onPressed: () {
+                  setState(() {
+                    if (Operator.isEmpty) {
+                      num1 += "8";
+                      ShowVal = num1;
+                    } else {
+                      num2 += "8";
+                      ShowVal = num2;
+                    }
+                  });
+                }, child: const Text('8')),
                 const SizedBox(width: 10),
-                FloatingActionButton(onPressed: () {}, child: const Text('9')),
+                FloatingActionButton(onPressed: () {
+                  setState(() {
+                    if (Operator.isEmpty) {
+                      num1 += "9";
+                      ShowVal = num1;
+                    } else {
+                      num2 += "9";
+                      ShowVal = num2;
+                    }
+                  });
+                }, child: const Text('9')),
                 const SizedBox(width: 10),
-                FloatingActionButton(onPressed: () {}, child: const Text('/')),
+                FloatingActionButton(onPressed: () {
+                  setState(() {
+                    Operator = "/";
+                  });
+                }, child: const Text('/')),
               ],
             ),
             const SizedBox(height: 10),
@@ -62,13 +100,47 @@ class _MyHomePageState extends State<MyHomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FloatingActionButton(onPressed: () {}, child: const Text('4')),
+                FloatingActionButton(onPressed: () {
+                  setState(() {
+                    if (Operator.isEmpty) {
+                      num1 += "4";
+                      ShowVal = num1;
+                    } else {
+                      num2 += "4";
+                      ShowVal = num2;
+                    }
+                  });
+                }, child: const Text('4')),
                 const SizedBox(width: 10),
-                FloatingActionButton(onPressed: () {}, child: const Text('5')),
+                FloatingActionButton(onPressed: () {
+                  setState(() {
+                    if (Operator.isEmpty) {
+                      num1 += "5";
+                      ShowVal = num1;
+                    } else {
+                      num2 += "5";
+                      ShowVal = num2;
+                    }
+                  });
+                }, child: const Text('5')),
                 const SizedBox(width: 10),
-                FloatingActionButton(onPressed: () {}, child: const Text('6')),
+                FloatingActionButton(onPressed: () {
+                  setState(() {
+                    if (Operator.isEmpty) {
+                      num1 += "6";
+                      ShowVal = num1;
+                    } else {
+                      num2 += "6";
+                      ShowVal = num2;
+                    }
+                  });
+                }, child: const Text('6')),
                 const SizedBox(width: 10),
-                FloatingActionButton(onPressed: () {}, child: const Text('x')),
+                FloatingActionButton(onPressed: () {
+                  setState(() {
+                    Operator = "x";
+                  });
+                }, child: const Text('x')),
               ],
             ),
             const SizedBox(height: 10),
@@ -76,13 +148,47 @@ class _MyHomePageState extends State<MyHomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FloatingActionButton(onPressed: () {}, child: const Text('1')),
+                FloatingActionButton(onPressed: () {
+                  setState(() {
+                    if (Operator.isEmpty) {
+                      num1 += "1";
+                      ShowVal = num1;
+                    } else {
+                      num2 += "1";
+                      ShowVal = num2;
+                    }
+                  });
+                }, child: const Text('1')),
                 const SizedBox(width: 10),
-                FloatingActionButton(onPressed: () {}, child: const Text('2')),
+                FloatingActionButton(onPressed: () {
+                  setState(() {
+                    if (Operator.isEmpty) {
+                      num1 += "2";
+                      ShowVal = num1;
+                    } else {
+                      num2 += "2";
+                      ShowVal = num2;
+                    }
+                  });
+                }, child: const Text('2')),
                 const SizedBox(width: 10),
-                FloatingActionButton(onPressed: () {}, child: const Text('3')),
+                FloatingActionButton(onPressed: () {
+                  setState(() {
+                    if (Operator.isEmpty) {
+                      num1 += "3";
+                      ShowVal = num1;
+                    } else {
+                      num2 += "3";
+                      ShowVal = num2;
+                    }
+                  });
+                }, child: const Text('3')),
                 const SizedBox(width: 10),
-                FloatingActionButton(onPressed: () {}, child: const Text('-')),
+                FloatingActionButton(onPressed: () {
+                  setState(() {
+                    Operator = "-";
+                  });
+                }, child: const Text('-')),
               ],
             ),
             const SizedBox(height: 10),
@@ -91,16 +197,58 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      num1 = "";
+                      num2 = "";
+                      Operator = "";
+                      ShowVal = "";
+                      Result = "";
+                    });
+                  },
                   backgroundColor: Colors.red[700],
                   child: const Text('C', style: TextStyle(color: Colors.white)),
                 ),
                 const SizedBox(width: 10),
-                FloatingActionButton(onPressed: () {}, child: const Text('0')),
+                FloatingActionButton(onPressed: () {
+                  setState(() {
+                    if (Operator.isEmpty) {
+                      num1 += "0";
+                      ShowVal = num1;
+                    } else {
+                      num2 += "0";
+                      ShowVal = num2;
+                    }
+                  });
+                }, child: const Text('0')),
                 const SizedBox(width: 10),
-                FloatingActionButton(onPressed: () {}, child: const Text('=')),
+                FloatingActionButton(onPressed: () {
+                  setState(() {
+                    double n1 = double.parse(num1);
+                    double n2 = double.parse(num2);
+                    double calc = 0;
+                    if (Operator == "+") {
+                      calc = n1 + n2;
+                    } else if (Operator == "-") {
+                      calc = n1 - n2;
+                    } else if (Operator == "x") {
+                      calc = n1 * n2;
+                    } else if (Operator == "/") {
+                      calc = n1 / n2;
+                    }
+                    Result = calc.toString();
+                    ShowVal = Result;
+                    num1 = Result;
+                    num2 = "";
+                    Operator = "";
+                  });
+                }, child: const Text('=')),
                 const SizedBox(width: 10),
-                FloatingActionButton(onPressed: () {}, child: const Text('+')),
+                FloatingActionButton(onPressed: () {
+                  setState(() {
+                    Operator = "+";
+                  });
+                }, child: const Text('+')),
               ],
             ),
           ],
