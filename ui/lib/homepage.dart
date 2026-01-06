@@ -1,34 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
+import 'form.dart';
 
-void main() {
-  runApp(const MyHomePage());
-}
-
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Center(
-              child: Column(
-                children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: const Text('Elevated'),
-                    style: ElevatedButton.styleFrom(fixedSize: Size(300, 80)),
-                  ),
-                  OutlinedButton(onPressed: onPressed, child: child),
-                ],
-              ),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text("Let's Begin"),
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.all(20.0),
+            fixedSize: const Size(300, 20),
+            textStyle: const TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
             ),
+            backgroundColor: Colors.blue,
+            foregroundColor: Colors.white,
+            elevation: 15,
+            shadowColor: Colors.blue,
+            side: const BorderSide(color: Colors.black87, width: 2),
           ),
-        ],
+
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const MyForm()),
+            );
+          },
+        ),
       ),
     );
   }
