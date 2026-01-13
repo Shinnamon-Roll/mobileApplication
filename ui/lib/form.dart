@@ -74,7 +74,10 @@ class _MyFormState extends State<MyForm> {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const forShopping()),
+          MaterialPageRoute(
+            builder: (context) =>
+                const forShopping(_productName, _customerName),
+          ),
         );
       },
       child: const Text('Go to Shopping 🛒'),
