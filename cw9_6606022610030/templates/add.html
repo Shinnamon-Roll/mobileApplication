@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เพิ่มข้อมูล</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; }
+    form { max-width: 420px; display: grid; gap: 12px; }
+    label { display: grid; gap: 6px; }
+    input, button { padding: 8px; font-size: 16px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    #msg { margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <h2>เพิ่มข้อมูลพนักงาน</h2>
+  <form id="empForm">
+    <label>
+      ชื่อ
+      <input id="name" required />
+    </label>
+    <label>
+      อีเมล
+      <input id="email" type="email" required />
+    </label>
+    <div class="row">
+      <label>
+        โทรศัพท์
+        <input id="phone" required />
+      </label>
+      <label>
+        วันเกิด
+        <input id="birthdate" type="date" />
+      </label>
+    </div>
+    <label>
+      ที่อยู่
+      <input id="address" required />
+    </label>
+    <div class="row">
+      <label>
+        น้ำหนัก (กก.)
+        <input id="weight" type="number" step="0.1" />
+      </label>
+      <label>
+        ส่วนสูง (ซม.)
+        <input id="height" type="number" step="0.1" />
+      </label>
+    </div>
+    <button type="submit">บันทึก</button>
+  </form>
+  <div id="msg"></div>
+  <script>
+    const form = document.getElementById('empForm');
+    const msg = document.getElementById('msg');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const payload = {
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        address: document.getElementById('address').value.trim(),
+        birthdate: document.getElementById('birthdate').value || null,
+        weight: document.getElementById('weight').value ? parseFloat(document.getElementById('weight').value) : null,
+        height: document.getElementById('height').value ? parseFloat(document.getElementById('height').value) : null,
+      };
+      try {
+        const res = await fetch('/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const text = await res.text();
+        msg.textContent = res.ok ? 'บันทึกสำเร็จ' : `เกิดข้อผิดพลาด: ${text}`;
+        if (res.ok) form.reset();
+      } catch (err) {
+        msg.textContent = 'ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์';
+      }
+    });
+  </script>
+</body>
+</html>
